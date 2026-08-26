@@ -1,0 +1,571 @@
+<title>かわすい スーパーSALEカレンダー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Josefin+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#faf4e8;
+    --paper:#241c14;
+    --paper-dim:#5c4f3e;
+    --surface:#ffffff;
+    --surface-2:#f1e6d2;
+    --line:#e4d6bd;
+    --ember:#a83f26;
+    --ember-soft:#f4e0d6;
+    --gold:#8a6a1f;
+    --gold-soft:#f2e6c4;
+    --pre:#6b5a3e;
+    --pre-soft:#eee4d0;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#1a140f;
+      --paper:#f4ead8;
+      --paper-dim:#b7a68c;
+      --surface:#241c15;
+      --surface-2:#2c2219;
+      --line:#4a3c2c;
+      --ember:#d9714f;
+      --ember-soft:#3a241c;
+      --gold:#d9b054;
+      --gold-soft:#3a2f18;
+      --pre:#c2ac82;
+      --pre-soft:#332a1c;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#1a140f;
+    --paper:#f4ead8;
+    --paper-dim:#b7a68c;
+    --surface:#241c15;
+    --surface-2:#2c2219;
+    --line:#4a3c2c;
+    --ember:#d9714f;
+    --ember-soft:#3a241c;
+    --gold:#d9b054;
+    --gold-soft:#3a2f18;
+    --pre:#c2ac82;
+    --pre-soft:#332a1c;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:"Zen Kaku Gothic New", "Hiragino Sans", sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{
+    max-width:1040px;
+    margin:0 auto;
+    padding:56px 24px 96px;
+  }
+  .num{ font-family:"Josefin Sans","Zen Kaku Gothic New",sans-serif; font-variant-numeric:tabular-nums; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    padding-bottom:40px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    margin:0;
+    font-family:"Josefin Sans",sans-serif;
+    font-size:13px;
+    letter-spacing:.22em;
+    color:var(--ember);
+    font-weight:600;
+  }
+  h1{
+    margin:0;
+    font-family:"Kaisei Opti", "Zen Kaku Gothic New", serif;
+    font-weight:700;
+    font-size:clamp(28px,4.6vw,44px);
+    line-height:1.35;
+    text-wrap:balance;
+    letter-spacing:.01em;
+  }
+  h1 .shop{
+    display:block;
+    font-size:.5em;
+    color:var(--paper-dim);
+    font-weight:500;
+    margin-bottom:6px;
+    letter-spacing:.08em;
+  }
+  .main-period{
+    display:flex;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:14px;
+    background:var(--ember-soft);
+    border:1px solid var(--ember);
+    border-radius:2px;
+    padding:18px 22px;
+    width:fit-content;
+  }
+  .main-period .label{
+    font-size:13px;
+    letter-spacing:.1em;
+    color:var(--ember);
+    font-weight:700;
+  }
+  .main-period .range{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    font-family:"Josefin Sans",sans-serif;
+    font-weight:600;
+    color:var(--paper);
+  }
+  .main-period .d{ font-size:26px; }
+  .main-period .t{ font-size:16px; color:var(--paper-dim); margin-left:2px;}
+  .main-period .arrow{ color:var(--paper-dim); font-size:16px; }
+  .sub{
+    margin:0;
+    font-size:14px;
+    color:var(--paper-dim);
+  }
+  .sub strong{ color:var(--ember); font-weight:700; }
+
+  /* ---------- Section headings ---------- */
+  section{ margin-top:64px; }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:20px;
+  }
+  .section-head h2{
+    margin:0;
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:.02em;
+  }
+  .section-head .note{
+    font-size:12.5px;
+    color:var(--paper-dim);
+  }
+
+  /* ---------- Gantt ---------- */
+  .gantt-scroll{
+    overflow-x:auto;
+    padding-bottom:4px;
+    margin:0 -2px;
+  }
+  .gantt{
+    min-width:880px;
+    position:relative;
+    padding:0 2px;
+  }
+  .gantt-days{
+    display:grid;
+    grid-template-columns:repeat(11,1fr);
+  }
+  .gantt-days span{
+    font-family:"Josefin Sans",sans-serif;
+    font-size:12.5px;
+    color:var(--paper-dim);
+    padding-bottom:8px;
+    border-bottom:1px solid var(--line);
+  }
+  .gantt-days span b{
+    color:var(--paper);
+    font-weight:600;
+    font-size:14px;
+    margin-right:3px;
+  }
+  .tracks{
+    position:relative;
+    margin-top:14px;
+    background-image:repeating-linear-gradient(to right, var(--line) 0, var(--line) 1px, transparent 1px, transparent calc(100% / 11));
+  }
+  .track{
+    position:relative;
+    height:38px;
+    margin-bottom:8px;
+  }
+  .track-label{
+    position:absolute;
+    left:0;
+    top:-17px;
+    font-size:11px;
+    color:var(--paper-dim);
+    letter-spacing:.04em;
+  }
+  .bar{
+    position:absolute;
+    top:6px;
+    height:26px;
+    border-radius:2px;
+    display:flex;
+    align-items:center;
+    padding:0 10px;
+    font-size:12.5px;
+    font-weight:600;
+    white-space:nowrap;
+    overflow:hidden;
+  }
+  .bar--pre{ background:var(--pre-soft); color:var(--pre); border:1px solid var(--pre); }
+  .bar--main{ background:var(--ember); color:#fff8f2; border:1px solid var(--ember); font-weight:700; }
+  .bar--fuku{ background:var(--gold-soft); color:var(--gold); border:1px solid var(--gold); }
+  .bar--day{ background:var(--surface-2); color:var(--paper); border:1px solid var(--line); }
+  .flag{
+    position:absolute;
+    top:-9px;
+    width:2px;
+    height:52px;
+    background:var(--ember);
+  }
+  .flag::after{
+    content:"スタートダッシュ 2h";
+    position:absolute;
+    top:-20px;
+    left:6px;
+    font-size:10.5px;
+    color:var(--ember);
+    white-space:nowrap;
+    font-weight:700;
+  }
+  .legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    margin-top:22px;
+    font-size:12px;
+    color:var(--paper-dim);
+  }
+  .legend span{ display:inline-flex; align-items:center; gap:7px; }
+  .legend i{ width:12px; height:12px; border-radius:2px; display:inline-block; }
+  .legend .i-pre{ background:var(--pre-soft); border:1px solid var(--pre); }
+  .legend .i-main{ background:var(--ember); }
+  .legend .i-fuku{ background:var(--gold-soft); border:1px solid var(--gold); }
+  .legend .i-day{ background:var(--surface-2); border:1px solid var(--line); }
+
+  /* ---------- Agenda ---------- */
+  .agenda-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    border-top:1px solid var(--line);
+  }
+  .agenda-item{
+    display:grid;
+    grid-template-columns:130px 1fr;
+    gap:24px;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .agenda-item.is-frame{
+    background:var(--ember-soft);
+    padding:18px 16px;
+    border-radius:2px;
+    border-bottom:1px solid var(--ember-soft);
+    margin:6px 0 10px;
+  }
+  .when{
+    font-family:"Josefin Sans",sans-serif;
+  }
+  .when .day{
+    font-size:22px;
+    font-weight:600;
+    color:var(--paper);
+    line-height:1.15;
+  }
+  .when .wd{
+    font-size:12px;
+    color:var(--paper-dim);
+    font-family:"Zen Kaku Gothic New",sans-serif;
+    margin-left:3px;
+  }
+  .when .time{
+    display:block;
+    margin-top:4px;
+    font-size:13px;
+    color:var(--paper-dim);
+    font-weight:500;
+  }
+  .body-col{ min-width:0; }
+  .tags{
+    display:flex;
+    gap:8px;
+    margin-bottom:8px;
+    flex-wrap:wrap;
+  }
+  .tag{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.04em;
+    padding:3px 9px;
+    border-radius:99px;
+  }
+  .tag--point{ background:var(--gold-soft); color:var(--gold); }
+  .tag--deal{ background:var(--ember-soft); color:var(--ember); }
+  .tag--frame{ background:transparent; color:#fff8f2; border:1px solid rgba(255,255,255,.5); }
+  .tag--note{ color:var(--paper-dim); background:var(--surface-2); }
+  .agenda-item h3{
+    margin:0 0 6px;
+    font-size:17px;
+    font-weight:700;
+  }
+  .agenda-item.is-frame h3{ color:#fff8f2; font-size:16px; }
+  .agenda-item.is-frame .when .day,
+  .agenda-item.is-frame .when .time{ color:#fff8f2; }
+  .agenda-item p{
+    margin:0 0 10px;
+    font-size:14px;
+    color:var(--paper-dim);
+    line-height:1.7;
+    max-width:60ch;
+  }
+  .links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .links a{
+    font-size:13px;
+    font-weight:600;
+    color:var(--ember);
+    text-decoration:none;
+    border-bottom:1px solid currentColor;
+    padding-bottom:1px;
+  }
+  .links a:hover{ opacity:.75; }
+  .links a:focus-visible, a:focus-visible{
+    outline:2px solid var(--ember);
+    outline-offset:3px;
+  }
+  .is-frame .links a{ color:#fff8f2; }
+
+  footer{
+    margin-top:56px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    font-size:12px;
+    color:var(--paper-dim);
+  }
+
+  @media (max-width:600px){
+    .page{ padding:40px 16px 72px; }
+    .agenda-item{ grid-template-columns:1fr; gap:6px; }
+    .when{ display:flex; align-items:baseline; gap:8px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="hero">
+    <p class="eyebrow">RAKUTEN SUPER SALE — OPERATION CALENDAR</p>
+    <h1><span class="shop">うなぎ屋かわすい</span>楽天スーパーSALE<br>企画カレンダー</h1>
+    <div class="main-period">
+      <span class="label">SS本体期間</span>
+      <span class="range">
+        <span class="d num">9/4</span><span class="t num">20:00</span>
+        <span class="arrow">→</span>
+        <span class="d num">9/11</span><span class="t num">01:59</span>
+      </span>
+    </div>
+    <p class="sub">本日 <span class="num">2026/8/26</span> 時点で、開催まで残り <strong class="num">9</strong> 日。9/1のプレセールから9/11深夜まで、日替わりで企画が切り替わります。</p>
+  </header>
+
+  <section class="gantt-section">
+    <div class="section-head">
+      <h2>企画全体フロー（9/1〜9/11）</h2>
+      <span class="note">横スクロールで全体を確認できます</span>
+    </div>
+
+    <div class="gantt-scroll">
+      <div class="gantt">
+        <div class="gantt-days">
+          <span><b>9/1</b>火</span>
+          <span><b>9/2</b>水</span>
+          <span><b>9/3</b>木</span>
+          <span><b>9/4</b>金</span>
+          <span><b>9/5</b>土</span>
+          <span><b>9/6</b>日</span>
+          <span><b>9/7</b>月</span>
+          <span><b>9/8</b>火</span>
+          <span><b>9/9</b>水</span>
+          <span><b>9/10</b>木</span>
+          <span><b>9/11</b>金</span>
+        </div>
+
+        <div class="tracks">
+          <div class="track">
+            <span class="track-label">プレセール</span>
+            <div class="bar bar--pre" style="left:0%;width:25.75%;">3種セット10倍</div>
+          </div>
+
+          <div class="track">
+            <span class="track-label">SS本体期間</span>
+            <div class="bar bar--main" style="left:34.85%;width:56.81%;">SUPER SALE 本体</div>
+            <div class="flag" style="left:34.85%;"></div>
+          </div>
+
+          <div class="track">
+            <span class="track-label">SS通し企画</span>
+            <div class="bar bar--fuku" style="left:32.58%;width:63.63%;">福袋（広告入稿済）</div>
+          </div>
+
+          <div class="track">
+            <span class="track-label">日替わり企画</span>
+            <div class="bar bar--day" style="left:36.36%;width:9.09%;">カード日</div>
+            <div class="bar bar--day" style="left:45.45%;width:9.09%;">ガチャ</div>
+            <div class="bar bar--day" style="left:54.55%;width:9.09%;">本マグロ</div>
+            <div class="bar bar--day" style="left:63.64%;width:9.09%;">2尾300g</div>
+            <div class="bar bar--day" style="left:72.73%;width:9.09%;">ズワイガニ</div>
+            <div class="bar bar--day" style="left:81.82%;width:9.84%;">クーポン/蒲焼</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span><i class="i-pre"></i>プレセール</span>
+      <span><i class="i-main"></i>SS本体期間</span>
+      <span><i class="i-fuku"></i>SS通し企画</span>
+      <span><i class="i-day"></i>日替わり企画</span>
+    </div>
+  </section>
+
+  <section class="agenda-section">
+    <div class="section-head">
+      <h2>日程詳細</h2>
+      <span class="note">全10企画</span>
+    </div>
+
+    <ol class="agenda-list">
+
+      <li class="agenda-item">
+        <div class="when">
+          <span class="day num">9/1<span class="wd">火</span> 〜 9/3<span class="wd">木</span></span>
+          <span class="time num">0:00 〜 19:59</span>
+        </div>
+        <div class="body-col">
+          <div class="tags"><span class="tag tag--point">ポイント10倍</span></div>
+          <h3>プレセール｜3種セット</h3>
+          <p>SS開幕前の先行企画。3種セットがポイント10倍。</p>
+          <div class="links"><a href="https://item.rakuten.co.jp/kawasui/10000130/" target="_blank" rel="noopener">商品ページを見る ↗</a></div>
+        </div>
+      </li>
+
+      <li class="agenda-item is-frame">
+        <div class="when">
+          <span class="day num">9/4<span class="wd">金</span> 〜 9/11<span class="wd">金</span></span>
+          <span class="time num">14:00 〜 13:59</span>
+        </div>
+        <div class="body-col">
+          <div class="tags"><span class="tag tag--frame">SS通し企画</span><span class="tag tag--frame">SS広告入稿済</span></div>
+          <h3>福袋｜スーパーSALE通しで販売</h3>
+          <p>SS期間全体を通しての目玉企画。SS広告への入稿が完了済み。</p>
+          <div class="links"><a href="https://item.rakuten.co.jp/kawasui/10002026/" target="_blank" rel="noopener">商品ページを見る ↗</a></div>
+        </div>
+      </li>
+
+      <li class="agenda-item">
+        <div class="when">
+          <span class="day num">9/4<span class="wd">金</span></span>
+          <span class="time num">20:00 〜 22:00</span>
+        </div>
+        <div class="body-col">
+          <div class="tags"><span class="tag tag--deal">全品10%OFF</span><span class="tag tag--note">先着200名</span></div>
+          <h3>2時間限定 スタートダッシュクーポン</h3>
+          <p>SS本体スタートと同時に発火する2時間限定クーポン。全品10%OFF・先着200名限り。</p>
+          <div class="links"><a href="https://coupon.rakuten.co.jp/getCoupon?getkey=VllVSC1NWExCLVQ4NVktVk04Ug--&rt=" target="_blank" rel="noopener">クーポンページを開く ↗</a></div>
+        </div>
+      </li>
+
+      <li class="agenda-item">
+        <div class="when">
+          <span class="day num">9/5<span class="wd">土</span></span>
+          <span class="time num">0:00 〜 23:59</span>
+        </div>
+        <div class="body-col">
+          <div class="tags"><span class="tag tag--point">ポイント10倍</span></div>
+          <h3>カードの日 ＆ ポイント広告</h3>
+          <p>エントリーで全品ポイント10倍。事前エントリーの案内を忘れずに。</p>
+        </div>
+      </li>
+
+      <li class="agenda-item">
+        <div class="when">
+          <span class="day num">9/6<span class="wd">日</span></span>
+          <span class="time num">0:00 〜 23:59</span>
+        </div>
+        <div class="body-col">
+          <div class="tags"><span class="tag tag--note">単発企画</span></div>
+          <h3>ガチャ販売</h3>
+          <p>1日限定のガチャ企画。</p>
+          <div class="links"><a href="https://item.rakuten.co.jp/kawasui/10002538/" target="_blank" rel="noopener">商品ページを見る ↗</a></div>
+        </div>
+      </li>
+
+      <li class="agenda-item">
+        <div class="when">
+          <span class="day num">9/7<span class="wd">月</span></span>
+          <span class="time num">0:00 〜 23:59</span>
+        </div>
+        <div class="body-col">
+          <div class="tags"><span class="tag tag--deal">8,980円 → 7,980円</span></div>
+          <h3>本マグロ セール</h3>
+          <p>本マグロが1日限定価格に。</p>
+          <div class="links"><a href="https://item.rakuten.co.jp/kawasui/10002403/" target="_blank" rel="noopener">商品ページを見る ↗</a></div>
+        </div>
+      </li>
+
+      <li class="agenda-item">
+        <div class="when">
+          <span class="day num">9/8<span class="wd">火</span></span>
+          <span class="time num">0:00 〜 23:59</span>
+        </div>
+        <div class="body-col">
+          <div class="tags"><span class="tag tag--point">ポイント10倍</span></div>
+          <h3>2尾300g</h3>
+          <p>2尾300gがポイント10倍。</p>
+          <div class="links"><a href="https://item.rakuten.co.jp/kawasui/10002524/" target="_blank" rel="noopener">商品ページを見る ↗</a></div>
+        </div>
+      </li>
+
+      <li class="agenda-item">
+        <div class="when">
+          <span class="day num">9/9<span class="wd">水</span></span>
+          <span class="time num">0:00 〜 23:59</span>
+        </div>
+        <div class="body-col">
+          <div class="tags"><span class="tag tag--deal">8,000円 → 6,380円</span></div>
+          <h3>ズワイガニ 1kgセール</h3>
+          <p>ズワイガニ1kgが1日限定価格に。</p>
+          <div class="links"><a href="https://item.rakuten.co.jp/kawasui/10002492/" target="_blank" rel="noopener">商品ページを見る ↗</a></div>
+        </div>
+      </li>
+
+      <li class="agenda-item">
+        <div class="when">
+          <span class="day num">9/10<span class="wd">木</span> 〜 9/11<span class="wd">金</span></span>
+          <span class="time num">0:00 〜 1:59</span>
+        </div>
+        <div class="body-col">
+          <div class="tags"><span class="tag tag--deal">777円OFFクーポン</span><span class="tag tag--point">ポイント10倍</span></div>
+          <h3>SSラストスパート｜蒲焼きカット</h3>
+          <p>10,000円以上で使える777円OFFクーポンに加え、蒲焼きカット500g・1kgがポイント10倍。SS本体の最終日、1:59まで開催。</p>
+          <div class="links">
+            <a href="https://item.rakuten.co.jp/kawasui/cut40-500/" target="_blank" rel="noopener">蒲焼きカット500g ↗</a>
+            <a href="https://item.rakuten.co.jp/kawasui/cut40-1k/" target="_blank" rel="noopener">蒲焼きカット1kg ↗</a>
+          </div>
+        </div>
+      </li>
+
+    </ol>
+  </section>
+
+  <footer>
+    うなぎ屋かわすい｜楽天スーパーSALE 企画カレンダー ／ 作成日 2026/8/26
+  </footer>
+
+</div>
