@@ -60,16 +60,16 @@
       radial-gradient(130% 100% at 50% 0%, var(--lacquer-2) 0%, var(--lacquer) 60%),
       var(--lacquer);
     color:var(--rice);
-    padding:72px 0 56px;
+    padding:56px 0 56px;
     text-align:center;
+    border-top:1px solid rgba(217,169,74,.25);
   }
-  .fv .eyebrow{
-    font-family:"Zen Kaku Gothic New","Josefin Sans",sans-serif;
-    font-size:15px;
-    letter-spacing:.16em;
-    color:var(--gold);
-    font-weight:700;
-    margin:0 0 26px;
+  .fv-logo{
+    display:block;
+    width:100%;
+    max-width:420px;
+    height:auto;
+    margin:0 auto 34px;
   }
   .fv h1{
     margin:0 0 30px;
@@ -324,13 +324,30 @@
     </div>
   </section>
 
+  <section class="day on-dark" id="d2">
+    <div class="inner">
+      <p class="eyebrow">START DASH（2時間限定）</p>
+      <div class="date-badge">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>
+        <div class="dt"><span class="d num">9/4<span class="wd">金</span></span><span class="t num">20:00 – 22:00</span></div>
+      </div>
+      <h3>スーパーSALE、開幕。<br>最初の2時間がいちばんお得です。</h3>
+      <p>本体期間のスタートと同時に、全品10%OFFのクーポンが使えます。先着200名に達し次第終了なので、20時になったらまずクーポンの受け取りから。</p>
+      <div class="stat-row">
+        <div class="stat"><div class="k">DISCOUNT</div><div class="v">10%OFF</div></div>
+        <div class="stat"><div class="k">LIMIT</div><div class="v">200名</div></div>
+      </div>
+      <div class="cta-row"><a class="cta cta-outline-gold" href="https://coupon.rakuten.co.jp/getCoupon?getkey=VllVSC1NWExCLVQ4NVktVk04Ug--&rt=" target="_blank" rel="noopener">クーポンを受け取る ↗</a></div>
+    </div>
+  </section>
+
   <div class="fv">
     <div class="inner">
-      <p class="eyebrow">楽天スーパーSALE</p>
+      <img class="fv-logo" src="images/ss-logo.png" alt="Rakuten スーパーSALE 9/4 20:00 → 9/11 01:59">
       <h1>十一日間、日替わりで<br>かわすいを愉しむ。</h1>
       <p class="lead">9月1日のプレセールから、9月11日の深夜まで。<br>日ごとに変わる企画を、ひとつずつのぞいてみてください。</p>
       <div class="period">
-        <span class="tag">楽天スーパーSALE本体期間</span>
+        <span class="tag">楽天スーパーSALE開催期間</span>
         <span class="range num">9/4 <small>fri 20:00</small><span class="arrow">→</span>9/11 <small>fri 01:59</small></span>
       </div>
     </div>
@@ -363,23 +380,6 @@
       <figure class="photo"><img src="images/product-fukubukuro.jpg" alt="うなぎ福袋" loading="lazy"></figure>
       <p>うなぎ蒲焼きから炙りひつまぶしまで、かわすいの人気メニューを一箱に。スーパーSALEの11日間、ずっと販売する今回いちばんの目玉企画です。</p>
       <div class="cta-row"><a class="cta cta-solid-dark" href="https://item.rakuten.co.jp/kawasui/10002026/" target="_blank" rel="noopener">福袋を見る ↗</a></div>
-    </div>
-  </section>
-
-  <section class="day on-dark" id="d2">
-    <div class="inner">
-      <p class="eyebrow">START DASH（2時間限定）</p>
-      <div class="date-badge">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>
-        <div class="dt"><span class="d num">9/4<span class="wd">金</span></span><span class="t num">20:00 – 22:00</span></div>
-      </div>
-      <h3>スーパーSALE、開幕。<br>最初の2時間がいちばんお得です。</h3>
-      <p>本体期間のスタートと同時に、全品10%OFFのクーポンが使えます。先着200名に達し次第終了なので、20時になったらまずクーポンの受け取りから。</p>
-      <div class="stat-row">
-        <div class="stat"><div class="k">DISCOUNT</div><div class="v">10%OFF</div></div>
-        <div class="stat"><div class="k">LIMIT</div><div class="v">200名</div></div>
-      </div>
-      <div class="cta-row"><a class="cta cta-outline-gold" href="https://coupon.rakuten.co.jp/getCoupon?getkey=VllVSC1NWExCLVQ4NVktVk04Ug--&rt=" target="_blank" rel="noopener">クーポンを受け取る ↗</a></div>
     </div>
   </section>
 
@@ -497,8 +497,8 @@
 
   <section class="closing">
     <div class="inner">
-      <h2>11日間、おつかれさまでした。<br>また次のスーパーSALEで。</h2>
-      <p>気になる企画は、開催日にこのページへ戻ってきてください。ブックマークしておくと、日替わりの内容がすぐに見つかります。</p>
+      <h2>11日間、おつかれさまでした。</h2>
+      <p>これからも楽しい企画を沢山行っていきたいと思います。今後ともかわすいをよろしくお願いします♪</p>
       <a class="cta cta-outline-gold" href="https://www.rakuten.co.jp/kawasui/" target="_blank" rel="noopener">うなぎ屋かわすい ショップをのぞく ↗</a>
       <footer>うなぎ屋かわすい｜楽天スーパーSALEの愉しみ方</footer>
     </div>
