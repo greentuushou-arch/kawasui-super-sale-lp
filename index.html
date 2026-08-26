@@ -182,6 +182,22 @@
   .day.on-light .eyebrow{ color:var(--ember-deep); }
   .day.on-dark .eyebrow{ color:var(--gold); }
 
+  /* date badge — icon + big date, sized to match the price stats */
+  .date-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    margin:0 0 22px;
+  }
+  .date-badge .icon{ width:36px; height:36px; flex-shrink:0; }
+  .date-badge .dt{ display:flex; flex-direction:column; align-items:flex-start; text-align:left; }
+  .date-badge .d{ font-family:"Josefin Sans",sans-serif; font-weight:700; font-size:44px; line-height:1.05; }
+  .date-badge .d .wd{ font-family:"Zen Kaku Gothic New",sans-serif; font-size:18px; font-weight:600; margin-left:5px; }
+  .date-badge .t{ font-family:"Josefin Sans",sans-serif; font-size:15px; font-weight:600; margin-top:5px; opacity:.75; }
+  .day.on-light .date-badge{ color:var(--ember-deep); }
+  .day.on-dark .date-badge{ color:var(--gold); }
+  .feature .date-badge{ color:var(--lacquer); }
+
   .day h3{
     margin:0 0 22px;
     font-family:"Kaisei Opti","Zen Kaku Gothic New",serif;
@@ -226,25 +242,6 @@
     letter-spacing:.06em;
     opacity:.8;
   }
-
-  /* text-only event block (no product photo) */
-  .no-photo{
-    border-top:1px solid currentColor;
-    border-bottom:1px solid currentColor;
-    opacity:.92;
-    padding:34px 0;
-    margin-bottom:30px;
-  }
-  .no-photo .big{
-    font-family:"Josefin Sans",sans-serif;
-    font-weight:700;
-    font-size:clamp(56px,20vw,84px);
-    line-height:1;
-  }
-  .day.on-light .no-photo .big{ color:var(--ember-deep); }
-  .day.on-dark .no-photo .big{ color:var(--gold); }
-  .no-photo .unit{ font-size:16px; letter-spacing:.06em; margin-top:12px; font-weight:700; }
-  .no-photo .sub{ font-size:13px; letter-spacing:.06em; margin-top:20px; opacity:.7; }
 
   /* entry CTA — the one day's action, made deliberately large */
   .entry-cta{
@@ -334,7 +331,11 @@
 
   <section class="feature">
     <div class="inner">
-      <p class="eyebrow">楽天スーパーSALE通し企画 ／ 9.4 fri 14:00 — 9.11 fri 13:59</p>
+      <p class="eyebrow">楽天スーパーSALE通し企画</p>
+      <div class="date-badge">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="15" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7.5" y1="3" x2="7.5" y2="7"/><line x1="16.5" y1="3" x2="16.5" y2="7"/></svg>
+        <div class="dt"><span class="d num">9/4<span class="wd">金</span> → 9/11<span class="wd">金</span></span><span class="t num">14:00 – 13:59</span></div>
+      </div>
       <h2>伝説の福袋、帰ってきました。</h2>
       <figure class="photo"><img src="images/product-fukubukuro.jpg" alt="うなぎ福袋" loading="lazy"></figure>
       <p>うなぎ蒲焼きから炙りひつまぶしまで、かわすいの人気メニューを一箱に。スーパーSALEの11日間、ずっと販売する今回いちばんの目玉企画です。</p>
@@ -344,7 +345,11 @@
 
   <section class="day on-light" id="d1">
     <div class="inner">
-      <p class="eyebrow">PRE SALE ／ 9.1 tue 0:00 — 9.3 thu 19:59</p>
+      <p class="eyebrow">PRE SALE</p>
+      <div class="date-badge">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="15" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7.5" y1="3" x2="7.5" y2="7"/><line x1="16.5" y1="3" x2="16.5" y2="7"/></svg>
+        <div class="dt"><span class="d num">9/1<span class="wd">火</span> → 9/3<span class="wd">木</span></span><span class="t num">0:00 – 19:59</span></div>
+      </div>
       <h3>本番の前に、ひと足お得に。</h3>
       <figure class="photo"><img src="images/product-3syu-set.jpg" alt="国産うなぎ三種セット" loading="lazy"></figure>
       <p>国産うなぎ三昧の3種セットが、この3日間だけポイント10倍。スーパーSALE開幕を待ちきれない方へ。</p>
@@ -357,14 +362,13 @@
 
   <section class="day on-dark" id="d2">
     <div class="inner">
-      <p class="eyebrow">START DASH ／ 9.4 fri 20:00 — 22:00（2時間限定）</p>
-      <h3>スーパーSALE、開幕。<br>最初の2時間がいちばんお得です。</h3>
-      <div class="no-photo">
-        <div class="big num">20:00</div>
-        <div class="unit">START — 22:00 まで</div>
-        <div class="sub">9月4日（金）／ 先着200名に達し次第終了</div>
+      <p class="eyebrow">START DASH（2時間限定）</p>
+      <div class="date-badge">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>
+        <div class="dt"><span class="d num">9/4<span class="wd">金</span></span><span class="t num">20:00 – 22:00</span></div>
       </div>
-      <p>本体期間のスタートと同時に、全品10%OFFのクーポンが使えます。先着200名限定なので、20時になったらまずクーポンの受け取りから。</p>
+      <h3>スーパーSALE、開幕。<br>最初の2時間がいちばんお得です。</h3>
+      <p>本体期間のスタートと同時に、全品10%OFFのクーポンが使えます。先着200名に達し次第終了なので、20時になったらまずクーポンの受け取りから。</p>
       <div class="stat-row">
         <div class="stat"><div class="k">DISCOUNT</div><div class="v">10%OFF</div></div>
         <div class="stat"><div class="k">LIMIT</div><div class="v">200名</div></div>
@@ -375,13 +379,12 @@
 
   <section class="day on-light" id="d3">
     <div class="inner">
-      <p class="eyebrow">CARD DAY ／ 9.5 sat ONLY</p>
-      <h3>9月5日（土）限定。<br>エントリーだけで、全品ポイント10倍。</h3>
-      <div class="no-photo">
-        <div class="big num">9/5</div>
-        <div class="unit">SAT — この日だけ</div>
-        <div class="sub">楽天カードの日 ＆ ポイント広告</div>
+      <p class="eyebrow">CARD DAY ONLY</p>
+      <div class="date-badge">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="15" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7.5" y1="3" x2="7.5" y2="7"/><line x1="16.5" y1="3" x2="16.5" y2="7"/></svg>
+        <div class="dt"><span class="d num">9/5<span class="wd">土</span></span><span class="t num">0:00 – 23:59</span></div>
       </div>
+      <h3>9月5日（土）限定。<br>エントリーだけで、全品ポイント10倍。</h3>
       <div class="stat-row">
         <div class="stat"><div class="k">POINT（要エントリー）</div><div class="v">10倍</div></div>
       </div>
@@ -393,7 +396,11 @@
 
   <section class="day on-dark" id="d4">
     <div class="inner">
-      <p class="eyebrow">GACHA ／ 9.6 sun 0:00 — 23:59</p>
+      <p class="eyebrow">GACHA</p>
+      <div class="date-badge">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="15" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7.5" y1="3" x2="7.5" y2="7"/><line x1="16.5" y1="3" x2="16.5" y2="7"/></svg>
+        <div class="dt"><span class="d num">9/6<span class="wd">日</span></span><span class="t num">0:00 – 23:59</span></div>
+      </div>
       <h3>何が届くかは、<br>開けてからのお楽しみ。</h3>
       <figure class="photo"><img src="images/product-gacha.jpg" alt="うなぎガチャ" loading="lazy"></figure>
       <p>1日限定のうなぎガチャを販売。中身はシークレット、届いてからのお楽しみです。</p>
@@ -403,7 +410,11 @@
 
   <section class="day on-light" id="d5">
     <div class="inner">
-      <p class="eyebrow">本マグロ セール ／ 9.7 mon 0:00 — 23:59</p>
+      <p class="eyebrow">本マグロ セール</p>
+      <div class="date-badge">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="15" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7.5" y1="3" x2="7.5" y2="7"/><line x1="16.5" y1="3" x2="16.5" y2="7"/></svg>
+        <div class="dt"><span class="d num">9/7<span class="wd">月</span></span><span class="t num">0:00 – 23:59</span></div>
+      </div>
       <h3>うなぎ屋が届ける、<br>本マグロという寄り道。</h3>
       <figure class="photo"><img src="images/product-maguro.jpg" alt="本マグロ トロ・赤身セット" loading="lazy"></figure>
       <p>紀州串本産、養殖本マグロのトロ・赤身セット500g。この日だけの特別価格です。</p>
@@ -416,7 +427,11 @@
 
   <section class="day on-dark" id="d6">
     <div class="inner">
-      <p class="eyebrow">2尾300g ／ 9.8 tue 0:00 — 23:59</p>
+      <p class="eyebrow">2尾300g</p>
+      <div class="date-badge">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="15" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7.5" y1="3" x2="7.5" y2="7"/><line x1="16.5" y1="3" x2="16.5" y2="7"/></svg>
+        <div class="dt"><span class="d num">9/8<span class="wd">火</span></span><span class="t num">0:00 – 23:59</span></div>
+      </div>
       <h3>ふたりで食べても、<br>ひとりで食べても。</h3>
       <figure class="photo"><img src="images/product-2bi300g.jpg" alt="うなぎ蒲焼き2尾300g" loading="lazy"></figure>
       <p>大きめサイズの長焼きを2尾セットで。この日だけポイント10倍です。</p>
@@ -429,7 +444,11 @@
 
   <section class="day on-light" id="d7">
     <div class="inner">
-      <p class="eyebrow">ずわいがに 1kgセール ／ 9.9 wed 0:00 — 23:59</p>
+      <p class="eyebrow">ずわいがに 1kgセール</p>
+      <div class="date-badge">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="15" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7.5" y1="3" x2="7.5" y2="7"/><line x1="16.5" y1="3" x2="16.5" y2="7"/></svg>
+        <div class="dt"><span class="d num">9/9<span class="wd">水</span></span><span class="t num">0:00 – 23:59</span></div>
+      </div>
       <h3>うなぎ屋が本気で選んだ、<br>殻カット済みのずわいがに。</h3>
       <figure class="photo"><img src="images/product-zuwaigani.jpg" alt="ずわいがに1kgセット" loading="lazy"></figure>
       <p>総重量1.2kg、殻カット済みで生食もしゃぶしゃぶも思いのまま。この日だけの特別価格です。</p>
@@ -442,7 +461,11 @@
 
   <section class="day on-dark" id="d8">
     <div class="inner">
-      <p class="eyebrow">LAST SPURT ／ 9.10 thu 0:00 — 9.11 fri 1:59</p>
+      <p class="eyebrow">LAST SPURT</p>
+      <div class="date-badge">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>
+        <div class="dt"><span class="d num">9/10<span class="wd">木</span> → 9/11<span class="wd">金</span></span><span class="t num">0:00 – 1:59</span></div>
+      </div>
       <h3>最後の夜まで、<br>気を抜かない。</h3>
       <div class="photo-pair">
         <figure>
