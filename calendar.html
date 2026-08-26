@@ -122,9 +122,9 @@
     font-weight:600;
     color:var(--paper);
   }
-  .main-period .d{ font-size:26px; }
-  .main-period .t{ font-size:16px; color:var(--paper-dim); margin-left:2px;}
-  .main-period .arrow{ color:var(--paper-dim); font-size:16px; }
+  .main-period .d{ font-size:38px; }
+  .main-period .t{ font-size:20px; color:var(--paper-dim); margin-left:2px;}
+  .main-period .arrow{ color:var(--paper-dim); font-size:18px; }
   .sub{
     margin:0;
     font-size:14px;
@@ -169,16 +169,18 @@
   }
   .gantt-days span{
     font-family:"Josefin Sans",sans-serif;
-    font-size:12.5px;
+    font-size:13px;
     color:var(--paper-dim);
-    padding-bottom:8px;
+    padding-bottom:10px;
     border-bottom:1px solid var(--line);
   }
   .gantt-days span b{
+    display:block;
     color:var(--paper);
-    font-weight:600;
-    font-size:14px;
-    margin-right:3px;
+    font-weight:700;
+    font-size:21px;
+    margin-right:0;
+    margin-bottom:2px;
   }
   .tracks{
     position:relative;
@@ -256,9 +258,9 @@
   }
   .agenda-item{
     display:grid;
-    grid-template-columns:130px 1fr;
+    grid-template-columns:170px 1fr;
     gap:24px;
-    padding:22px 0;
+    padding:26px 0;
     border-bottom:1px solid var(--line);
   }
   .agenda-item.is-frame{
@@ -272,23 +274,23 @@
     font-family:"Josefin Sans",sans-serif;
   }
   .when .day{
-    font-size:22px;
-    font-weight:600;
+    font-size:34px;
+    font-weight:700;
     color:var(--paper);
-    line-height:1.15;
+    line-height:1.25;
   }
   .when .wd{
-    font-size:12px;
+    font-size:15px;
     color:var(--paper-dim);
     font-family:"Zen Kaku Gothic New",sans-serif;
-    margin-left:3px;
+    margin-left:4px;
   }
   .when .time{
     display:block;
-    margin-top:4px;
-    font-size:13px;
+    margin-top:8px;
+    font-size:16px;
     color:var(--paper-dim);
-    font-weight:500;
+    font-weight:600;
   }
   .body-col{ min-width:0; }
   .tags{
@@ -353,8 +355,9 @@
 
   @media (max-width:600px){
     .page{ padding:40px 16px 72px; }
-    .agenda-item{ grid-template-columns:1fr; gap:6px; }
-    .when{ display:flex; align-items:baseline; gap:8px; }
+    .agenda-item{ grid-template-columns:1fr; gap:10px; }
+    .when{ display:flex; align-items:baseline; flex-wrap:wrap; gap:8px 14px; }
+    .when .time{ margin-top:0; }
   }
 </style>
 
