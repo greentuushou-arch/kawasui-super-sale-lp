@@ -11,7 +11,7 @@
     --ember-deep:#b83a1c;
     --gold:#d9a94a;
     --gold-deep:#a9812f;
-    --rice:#f7ecd8;
+    --rice:#fbf3e4;
     --rice-2:#efe0c4;
     --ink:#3a140e;
     --ink-dim:#7a4a3a;
@@ -29,66 +29,72 @@
   a{color:inherit;}
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
 
-  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+  /* ---------------- Page frame: centered column, red bleed on the sides ---------------- */
+  .page{
+    max-width:750px;
+    margin:0 auto;
+    background:var(--rice);
+    box-shadow:0 0 60px rgba(0,0,0,.35);
+    overflow:hidden;
+  }
+  .inner{ padding:0 26px; max-width:560px; margin:0 auto; }
 
   /* ---------------- FV ---------------- */
   .fv{
     background:
-      radial-gradient(120% 90% at 15% 0%, var(--lacquer-2) 0%, var(--lacquer) 55%),
+      radial-gradient(130% 100% at 50% 0%, var(--lacquer-2) 0%, var(--lacquer) 60%),
       var(--lacquer);
     color:var(--rice);
-    padding:96px 0 72px;
-    border-bottom:1px solid rgba(217,169,74,.25);
+    padding:72px 0 56px;
+    text-align:center;
   }
   .fv .eyebrow{
     font-family:"Josefin Sans",sans-serif;
-    font-size:13px;
-    letter-spacing:.3em;
+    font-size:15px;
+    letter-spacing:.32em;
     color:var(--gold);
     font-weight:600;
-    margin:0 0 22px;
+    margin:0 0 26px;
   }
   .fv h1{
-    margin:0 0 28px;
+    margin:0 0 30px;
     font-family:"Kaisei Opti","Zen Kaku Gothic New",serif;
     font-weight:700;
-    font-size:clamp(30px,5vw,52px);
-    line-height:1.5;
+    font-size:clamp(38px,10vw,54px);
+    line-height:1.45;
     text-wrap:balance;
-    max-width:15ch;
   }
   .fv .lead{
     margin:0 0 40px;
-    font-size:16px;
+    font-size:17px;
     line-height:2;
     color:var(--rice-2);
-    max-width:38ch;
   }
   .fv .period{
     display:inline-flex;
-    align-items:baseline;
-    gap:16px;
-    flex-wrap:wrap;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
     border:1px solid var(--gold);
     background:rgba(217,169,74,.08);
-    padding:20px 26px;
+    padding:22px 28px;
   }
   .fv .period .tag{
-    font-size:12.5px;
-    letter-spacing:.14em;
+    font-size:13px;
+    letter-spacing:.16em;
     color:var(--gold);
     font-weight:700;
   }
   .fv .period .range{
     font-family:"Josefin Sans",sans-serif;
     font-weight:600;
-    font-size:24px;
+    font-size:28px;
     display:flex;
     align-items:baseline;
-    gap:8px;
+    gap:10px;
   }
-  .fv .period .range small{font-size:14px; color:var(--rice-2); font-weight:500;}
-  .fv .period .arrow{color:var(--rice-2); font-size:15px;}
+  .fv .period .range small{font-size:15px; color:var(--rice-2); font-weight:500;}
+  .fv .period .arrow{color:var(--rice-2); font-size:16px;}
 
   /* ---------------- Date strip ---------------- */
   .datestrip{
@@ -99,18 +105,15 @@
   .datestrip-inner{
     display:flex;
     min-width:max-content;
-    max-width:1080px;
-    margin:0 auto;
-    padding:0 28px;
   }
   .datestrip a{
     text-decoration:none;
-    padding:16px 18px;
+    padding:16px 16px;
     font-family:"Josefin Sans",sans-serif;
     font-size:14px;
     font-weight:600;
     color:var(--ink-dim);
-    border-right:1px solid rgba(44,26,18,.1);
+    border-right:1px solid rgba(58,20,14,.1);
     white-space:nowrap;
   }
   .datestrip a span{display:block; font-size:10.5px; letter-spacing:.08em; color:var(--ink-dim); font-family:"Zen Kaku Gothic New",sans-serif; margin-top:2px;}
@@ -120,88 +123,82 @@
   .feature{
     background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
     color:var(--lacquer);
-    padding:64px 0;
-  }
-  .feature .grid{
-    display:grid;
-    grid-template-columns:1.05fr .95fr;
-    gap:48px;
-    align-items:center;
+    padding:56px 0;
+    text-align:center;
   }
   .feature .eyebrow{
     font-family:"Josefin Sans",sans-serif;
-    font-size:12.5px;
+    font-size:13px;
     letter-spacing:.14em;
     font-weight:700;
-    margin:0 0 16px;
+    margin:0 0 18px;
   }
   .feature h2{
-    margin:0 0 18px;
+    margin:0 0 20px;
     font-family:"Kaisei Opti","Zen Kaku Gothic New",serif;
     font-weight:700;
-    font-size:clamp(26px,3.4vw,36px);
-    line-height:1.45;
+    font-size:clamp(28px,8vw,36px);
+    line-height:1.5;
     text-wrap:balance;
   }
   .feature p{
-    margin:0 0 26px;
-    font-size:15px;
+    margin:0 0 28px;
+    font-size:15.5px;
     line-height:1.95;
-    max-width:42ch;
   }
-  .feature .cta{
+  .feature .photo{ border:1px solid rgba(126,28,20,.35); margin-bottom:28px; }
+  .feature .photo img{ width:100%; height:auto; }
+
+  /* ---------------- CTA buttons ---------------- */
+  .cta{
     display:inline-flex;
     align-items:center;
     gap:10px;
-    background:var(--lacquer);
-    color:var(--rice);
     text-decoration:none;
     font-weight:700;
-    font-size:14px;
-    padding:14px 26px;
+    font-size:16px;
+    padding:17px 30px;
     letter-spacing:.02em;
   }
-  .feature .cta:hover{ background:var(--lacquer-2); }
-  .feature .photo{ border:1px solid rgba(126,28,20,.35); }
-  .feature .photo img{ width:100%; height:auto; }
+  .cta-solid-dark{ background:var(--lacquer); color:var(--rice); }
+  .cta-solid-dark:hover{ background:var(--lacquer-2); }
+  .cta-outline-ember{ border:1.5px solid var(--ember-deep); color:var(--ember-deep); }
+  .cta-outline-gold{ border:1.5px solid var(--gold); color:var(--gold); }
+  .cta:hover{ opacity:.75; }
+  .cta-row{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
 
   /* ---------------- Day sections ---------------- */
-  .day{ padding:76px 0; }
+  .day{ padding:60px 0; text-align:center; }
   .day.on-light{ background:var(--rice); color:var(--ink); }
   .day.on-dark{ background:var(--lacquer); color:var(--rice); }
 
-  .day .grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:56px;
-    align-items:center;
-  }
-  .day.flip .grid{ direction:rtl; }
-  .day.flip .grid > *{ direction:ltr; }
-
   .day .eyebrow{
     font-family:"Josefin Sans",sans-serif;
-    font-size:12.5px;
+    font-size:13px;
     letter-spacing:.14em;
     font-weight:700;
-    margin:0 0 16px;
+    margin:0 0 18px;
   }
   .day.on-light .eyebrow{ color:var(--ember-deep); }
   .day.on-dark .eyebrow{ color:var(--gold); }
 
   .day h3{
-    margin:0 0 20px;
+    margin:0 0 22px;
     font-family:"Kaisei Opti","Zen Kaku Gothic New",serif;
     font-weight:700;
-    font-size:clamp(24px,3vw,32px);
-    line-height:1.5;
+    font-size:clamp(28px,8.5vw,38px);
+    line-height:1.45;
     text-wrap:balance;
   }
+  .day .photo{ margin-bottom:26px; }
+  .day .photo img{ width:100%; height:auto; }
+  .day.on-light .photo{ border:1px solid rgba(217,169,74,.6); }
+  .day.on-dark .photo{ border:1px solid rgba(217,169,74,.4); }
+
   .day p{
-    margin:0 0 26px;
-    font-size:15px;
+    margin:0 0 30px;
+    font-size:16px;
     line-height:1.95;
-    max-width:40ch;
   }
   .day.on-light p{ color:var(--ink-dim); }
   .day.on-dark p{ color:var(--rice-2); }
@@ -209,304 +206,241 @@
   .stat-row{
     display:flex;
     flex-wrap:wrap;
-    gap:32px;
-    margin-bottom:28px;
+    gap:36px;
+    justify-content:center;
+    margin-bottom:32px;
   }
-  .stat .k{ font-size:11.5px; letter-spacing:.1em; opacity:.75; margin-bottom:6px; }
-  .stat .v{ font-family:"Josefin Sans",sans-serif; font-size:30px; font-weight:600; }
+  .stat .k{ font-size:12px; letter-spacing:.1em; opacity:.75; margin-bottom:8px; }
+  .stat .v{ font-family:"Josefin Sans",sans-serif; font-size:46px; font-weight:700; line-height:1; }
   .day.on-light .stat .v{ color:var(--ember-deep); }
   .day.on-dark .stat .v{ color:var(--gold); }
-  .stat .v .was{ font-size:17px; opacity:.55; text-decoration:line-through; margin-right:8px; font-weight:500;}
+  .stat .v .was{ font-size:22px; opacity:.5; text-decoration:line-through; margin-right:10px; font-weight:500;}
 
-  .day .cta{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    text-decoration:none;
-    font-weight:700;
-    font-size:14px;
-    padding:13px 24px;
-    border:1.5px solid currentColor;
-  }
-  .day.on-light .cta{ color:var(--ember-deep); }
-  .day.on-dark .cta{ color:var(--gold); }
-  .day .cta:hover{ opacity:.7; }
-  .cta-row{ display:flex; flex-wrap:wrap; gap:14px; }
-
-  .day .photo{
-    border:1px solid rgba(217,169,74,.5);
-  }
-  .day.on-dark .photo{ border-color:rgba(217,169,74,.4); }
-  .day .photo img{ width:100%; height:auto; }
-  .photo-pair{ display:flex; gap:14px; }
-  .photo-pair .photo{ flex:1; }
+  .photo-pair{ display:flex; gap:14px; margin-bottom:26px; }
+  .photo-pair figure{ flex:1; }
+  .photo-pair .photo{ margin-bottom:0; }
   .photo-pair figcaption{
     margin-top:10px;
     font-family:"Josefin Sans",sans-serif;
-    font-size:12.5px;
+    font-size:13px;
     letter-spacing:.06em;
-    text-align:center;
     opacity:.8;
   }
 
   /* text-only event block (no product photo) */
-  .day .no-photo{
+  .no-photo{
     border-top:1px solid currentColor;
     border-bottom:1px solid currentColor;
-    opacity:.9;
-    padding:36px 0;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    height:100%;
+    opacity:.92;
+    padding:34px 0;
+    margin-bottom:30px;
   }
   .no-photo .big{
     font-family:"Josefin Sans",sans-serif;
     font-weight:700;
-    font-size:clamp(48px,6vw,72px);
+    font-size:clamp(56px,20vw,84px);
     line-height:1;
   }
   .day.on-light .no-photo .big{ color:var(--ember-deep); }
   .day.on-dark .no-photo .big{ color:var(--gold); }
-  .no-photo .unit{ font-size:15px; letter-spacing:.06em; margin-top:10px; font-weight:600; }
-  .no-photo .sub{ font-size:12.5px; letter-spacing:.06em; margin-top:22px; opacity:.7; }
+  .no-photo .unit{ font-size:16px; letter-spacing:.06em; margin-top:12px; font-weight:700; }
+  .no-photo .sub{ font-size:13px; letter-spacing:.06em; margin-top:20px; opacity:.7; }
+
+  /* entry CTA — the one day's action, made deliberately large */
+  .entry-cta{
+    display:block;
+    width:100%;
+    text-decoration:none;
+    background:var(--ember-deep);
+    color:var(--rice);
+    font-weight:700;
+    font-size:20px;
+    letter-spacing:.04em;
+    padding:26px 20px;
+    margin-bottom:14px;
+  }
+  .entry-cta:hover{ background:var(--lacquer); }
+  .entry-cta .small{ display:block; font-size:12.5px; font-weight:600; letter-spacing:.1em; opacity:.85; margin-top:6px; }
+  .entry-note{ font-size:12px; color:var(--ink-dim); opacity:.75; }
 
   /* ---------------- Closing ---------------- */
   .closing{
     background:var(--lacquer);
     color:var(--rice);
-    padding:96px 0 72px;
-    text-align:left;
-    border-top:1px solid rgba(217,169,74,.25);
+    padding:72px 0 56px;
+    text-align:center;
   }
   .closing h2{
-    margin:0 0 18px;
+    margin:0 0 20px;
     font-family:"Kaisei Opti","Zen Kaku Gothic New",serif;
     font-weight:700;
-    font-size:clamp(24px,3.2vw,32px);
+    font-size:clamp(26px,7.5vw,34px);
     line-height:1.5;
   }
   .closing p{
     margin:0 0 32px;
     color:var(--rice-2);
-    font-size:15px;
+    font-size:15.5px;
     line-height:1.9;
-    max-width:42ch;
   }
-  .closing .cta{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    text-decoration:none;
-    font-weight:700;
-    font-size:14px;
-    color:var(--gold);
-    border:1.5px solid var(--gold);
-    padding:14px 26px;
-  }
-  .closing .cta:hover{ background:rgba(217,169,74,.1); }
   .closing footer{
-    margin-top:64px;
-    padding-top:24px;
-    border-top:1px solid rgba(247,236,216,.15);
+    margin-top:56px;
+    padding-top:22px;
+    border-top:1px solid rgba(251,243,228,.15);
     font-size:12px;
     color:var(--rice-2);
     opacity:.7;
   }
 
-  @media (max-width:820px){
-    .wrap{ padding:0 20px; }
-    .fv{ padding:64px 0 48px; }
-    .feature{ padding:48px 0; }
-    .feature .grid{ grid-template-columns:1fr; gap:28px; }
-    .feature .photo{ order:-1; }
-    .day{ padding:52px 0; }
-    .day .grid{ grid-template-columns:1fr; gap:26px; }
-    .day.flip .grid{ direction:ltr; }
-    .day .photo{ order:-1; }
+  @media (max-width:520px){
+    .inner{ padding:0 22px; }
+    .fv{ padding:56px 0 44px; }
+    .feature{ padding:44px 0; }
+    .day{ padding:48px 0; }
+    .stat-row{ gap:26px; }
     .photo-pair{ flex-direction:column; }
-    .stat-row{ gap:24px; }
   }
 </style>
 
-<div class="fv">
-  <div class="wrap">
-    <p class="eyebrow">RAKUTEN SUPER SALE</p>
-    <h1>十一日間、日替わりで<br>かわすいを愉しむ。</h1>
-    <p class="lead">9月1日のプレセールから、9月11日の深夜まで。<br>日ごとに変わる企画を、ひとつずつのぞいてみてください。</p>
-    <div class="period">
-      <span class="tag">SUPER SALE 本体期間</span>
-      <span class="range num">9/4 <small>fri 20:00</small><span class="arrow">→</span>9/11 <small>fri 01:59</small></span>
+<div class="page">
+
+  <div class="fv">
+    <div class="inner">
+      <p class="eyebrow">RAKUTEN SUPER SALE</p>
+      <h1>十一日間、日替わりで<br>かわすいを愉しむ。</h1>
+      <p class="lead">9月1日のプレセールから、9月11日の深夜まで。<br>日ごとに変わる企画を、ひとつずつのぞいてみてください。</p>
+      <div class="period">
+        <span class="tag">SUPER SALE 本体期間</span>
+        <span class="range num">9/4 <small>fri 20:00</small><span class="arrow">→</span>9/11 <small>fri 01:59</small></span>
+      </div>
     </div>
   </div>
-</div>
 
-<nav class="datestrip">
-  <div class="datestrip-inner">
-    <a href="#d1">9/1<span>火</span></a>
-    <a href="#d1">9/2<span>水</span></a>
-    <a href="#d1">9/3<span>木</span></a>
-    <a href="#d2">9/4<span>金</span></a>
-    <a href="#d3">9/5<span>土</span></a>
-    <a href="#d4">9/6<span>日</span></a>
-    <a href="#d5">9/7<span>月</span></a>
-    <a href="#d6">9/8<span>火</span></a>
-    <a href="#d7">9/9<span>水</span></a>
-    <a href="#d8">9/10<span>木</span></a>
-    <a href="#d8">9/11<span>金</span></a>
-  </div>
-</nav>
+  <nav class="datestrip">
+    <div class="datestrip-inner">
+      <a href="#d1">9/1<span>火</span></a>
+      <a href="#d1">9/2<span>水</span></a>
+      <a href="#d1">9/3<span>木</span></a>
+      <a href="#d2">9/4<span>金</span></a>
+      <a href="#d3">9/5<span>土</span></a>
+      <a href="#d4">9/6<span>日</span></a>
+      <a href="#d5">9/7<span>月</span></a>
+      <a href="#d6">9/8<span>火</span></a>
+      <a href="#d7">9/9<span>水</span></a>
+      <a href="#d8">9/10<span>木</span></a>
+      <a href="#d8">9/11<span>金</span></a>
+    </div>
+  </nav>
 
-<section class="feature">
-  <div class="wrap">
-    <div class="grid">
-      <div>
-        <p class="eyebrow">SUPER SALE 通し企画 ／ 9.4 fri 14:00 — 9.11 fri 13:59</p>
-        <h2>伝説の福袋、帰ってきました。</h2>
-        <p>うなぎ蒲焼きから炙りひつまぶしまで、かわすいの人気メニューを一箱に。スーパーSALEの11日間、ずっと販売する今回いちばんの目玉企画です。</p>
-        <a class="cta" href="https://item.rakuten.co.jp/kawasui/10002026/" target="_blank" rel="noopener">福袋を見る ↗</a>
-      </div>
+  <section class="feature">
+    <div class="inner">
+      <p class="eyebrow">SUPER SALE 通し企画 ／ 9.4 fri 14:00 — 9.11 fri 13:59</p>
+      <h2>伝説の福袋、帰ってきました。</h2>
       <figure class="photo"><img src="images/product-fukubukuro.jpg" alt="うなぎ福袋" loading="lazy"></figure>
+      <p>うなぎ蒲焼きから炙りひつまぶしまで、かわすいの人気メニューを一箱に。スーパーSALEの11日間、ずっと販売する今回いちばんの目玉企画です。</p>
+      <div class="cta-row"><a class="cta cta-solid-dark" href="https://item.rakuten.co.jp/kawasui/10002026/" target="_blank" rel="noopener">福袋を見る ↗</a></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="day on-light" id="d1">
-  <div class="wrap">
-    <div class="grid">
-      <div>
-        <p class="eyebrow">PRE SALE ／ 9.1 tue 0:00 — 9.3 thu 19:59</p>
-        <h3>本番の前に、ひと足お得に。</h3>
-        <p>国産うなぎ三昧の3種セットが、この3日間だけポイント10倍。スーパーSALE開幕を待ちきれない方へ。</p>
-        <div class="stat-row">
-          <div class="stat"><div class="k">POINT</div><div class="v">10倍</div></div>
-        </div>
-        <div class="cta-row"><a class="cta" href="https://item.rakuten.co.jp/kawasui/10000130/" target="_blank" rel="noopener">3種セットを見る ↗</a></div>
-      </div>
+  <section class="day on-light" id="d1">
+    <div class="inner">
+      <p class="eyebrow">PRE SALE ／ 9.1 tue 0:00 — 9.3 thu 19:59</p>
+      <h3>本番の前に、ひと足お得に。</h3>
       <figure class="photo"><img src="images/product-3syu-set.jpg" alt="国産うなぎ三種セット" loading="lazy"></figure>
-    </div>
-  </div>
-</section>
-
-<section class="day on-dark" id="d2">
-  <div class="wrap">
-    <div class="grid">
-      <div>
-        <p class="eyebrow">START DASH ／ 9.4 fri 20:00 — 22:00（2時間限定）</p>
-        <h3>スーパーSALE、開幕。<br>最初の2時間がいちばんお得です。</h3>
-        <p>本体期間のスタートと同時に、全品10%OFFのクーポンが使えます。先着200名限定なので、20時になったらまずクーポンの受け取りから。</p>
-        <div class="stat-row">
-          <div class="stat"><div class="k">DISCOUNT</div><div class="v">全品10%OFF</div></div>
-          <div class="stat"><div class="k">LIMIT</div><div class="v">先着200名</div></div>
-        </div>
-        <div class="cta-row"><a class="cta" href="https://coupon.rakuten.co.jp/getCoupon?getkey=VllVSC1NWExCLVQ4NVktVk04Ug--&rt=" target="_blank" rel="noopener">クーポンを受け取る ↗</a></div>
+      <p>国産うなぎ三昧の3種セットが、この3日間だけポイント10倍。スーパーSALE開幕を待ちきれない方へ。</p>
+      <div class="stat-row">
+        <div class="stat"><div class="k">POINT</div><div class="v">10倍</div></div>
       </div>
+      <div class="cta-row"><a class="cta cta-outline-ember" href="https://item.rakuten.co.jp/kawasui/10000130/" target="_blank" rel="noopener">3種セットを見る ↗</a></div>
+    </div>
+  </section>
+
+  <section class="day on-dark" id="d2">
+    <div class="inner">
+      <p class="eyebrow">START DASH ／ 9.4 fri 20:00 — 22:00（2時間限定）</p>
+      <h3>スーパーSALE、開幕。<br>最初の2時間がいちばんお得です。</h3>
       <div class="no-photo">
         <div class="big num">20:00</div>
         <div class="unit">START — 22:00 まで</div>
         <div class="sub">9月4日（金）／ 先着200名に達し次第終了</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="day on-light" id="d3">
-  <div class="wrap">
-    <div class="grid">
-      <div>
-        <p class="eyebrow">CARD DAY ／ 9.5 sat 0:00 — 23:59</p>
-        <h3>エントリーだけで、<br>全品ポイント10倍。</h3>
-        <p>楽天カードの日にあわせて、ポイント広告にエントリーすると全品ポイント10倍に。お買い物の前に、エントリーだけお忘れなく。</p>
-        <div class="stat-row">
-          <div class="stat"><div class="k">POINT（要エントリー）</div><div class="v">10倍</div></div>
-        </div>
+      <p>本体期間のスタートと同時に、全品10%OFFのクーポンが使えます。先着200名限定なので、20時になったらまずクーポンの受け取りから。</p>
+      <div class="stat-row">
+        <div class="stat"><div class="k">DISCOUNT</div><div class="v">10%OFF</div></div>
+        <div class="stat"><div class="k">LIMIT</div><div class="v">200名</div></div>
       </div>
+      <div class="cta-row"><a class="cta cta-outline-gold" href="https://coupon.rakuten.co.jp/getCoupon?getkey=VllVSC1NWExCLVQ4NVktVk04Ug--&rt=" target="_blank" rel="noopener">クーポンを受け取る ↗</a></div>
+    </div>
+  </section>
+
+  <section class="day on-light" id="d3">
+    <div class="inner">
+      <p class="eyebrow">CARD DAY ／ 9.5 sat 0:00 — 23:59</p>
+      <h3>エントリーだけで、<br>全品ポイント10倍。</h3>
       <div class="no-photo">
         <div class="big num">×10</div>
         <div class="unit">ポイント倍率</div>
         <div class="sub">9月5日（土）／ カードの日＆ポイント広告</div>
       </div>
+      <p>楽天カードの日にあわせて、ポイント広告にエントリーすると全品ポイント10倍に。お買い物の前に、エントリーだけお忘れなく。</p>
+      <a class="entry-cta" href="#" target="_blank" rel="noopener">エントリーする<span class="small">ENTRY — 9月5日 23:59まで</span></a>
+      <p class="entry-note">※エントリーページのURLが決まり次第、リンク先を差し替えます</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="day on-dark flip" id="d4">
-  <div class="wrap">
-    <div class="grid">
-      <div>
-        <p class="eyebrow">GACHA ／ 9.6 sun 0:00 — 23:59</p>
-        <h3>何が届くかは、<br>開けてからのお楽しみ。</h3>
-        <p>1日限定のうなぎガチャを販売。中身はシークレット、届いてからのお楽しみです。</p>
-        <div class="cta-row"><a class="cta" href="https://item.rakuten.co.jp/kawasui/10002538/" target="_blank" rel="noopener">ガチャに挑戦する ↗</a></div>
-      </div>
+  <section class="day on-dark" id="d4">
+    <div class="inner">
+      <p class="eyebrow">GACHA ／ 9.6 sun 0:00 — 23:59</p>
+      <h3>何が届くかは、<br>開けてからのお楽しみ。</h3>
       <figure class="photo"><img src="images/product-gacha.jpg" alt="うなぎガチャ" loading="lazy"></figure>
+      <p>1日限定のうなぎガチャを販売。中身はシークレット、届いてからのお楽しみです。</p>
+      <div class="cta-row"><a class="cta cta-outline-gold" href="https://item.rakuten.co.jp/kawasui/10002538/" target="_blank" rel="noopener">ガチャに挑戦する ↗</a></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="day on-light" id="d5">
-  <div class="wrap">
-    <div class="grid">
-      <div>
-        <p class="eyebrow">本マグロ セール ／ 9.7 mon 0:00 — 23:59</p>
-        <h3>うなぎ屋が届ける、<br>本マグロという寄り道。</h3>
-        <p>紀州串本産、養殖本マグロのトロ・赤身セット500g。この日だけの特別価格です。</p>
-        <div class="stat-row">
-          <div class="stat"><div class="k">PRICE</div><div class="v"><span class="was num">8,980円</span><span class="num">7,980円</span></div></div>
-        </div>
-        <div class="cta-row"><a class="cta" href="https://item.rakuten.co.jp/kawasui/10002403/" target="_blank" rel="noopener">本マグロを見る ↗</a></div>
-      </div>
+  <section class="day on-light" id="d5">
+    <div class="inner">
+      <p class="eyebrow">本マグロ セール ／ 9.7 mon 0:00 — 23:59</p>
+      <h3>うなぎ屋が届ける、<br>本マグロという寄り道。</h3>
       <figure class="photo"><img src="images/product-maguro.jpg" alt="本マグロ トロ・赤身セット" loading="lazy"></figure>
-    </div>
-  </div>
-</section>
-
-<section class="day on-dark flip" id="d6">
-  <div class="wrap">
-    <div class="grid">
-      <div>
-        <p class="eyebrow">2尾300g ／ 9.8 tue 0:00 — 23:59</p>
-        <h3>ふたりで食べても、<br>ひとりで食べても。</h3>
-        <p>大きめサイズの長焼きを2尾セットで。この日だけポイント10倍です。</p>
-        <div class="stat-row">
-          <div class="stat"><div class="k">POINT</div><div class="v">10倍</div></div>
-        </div>
-        <div class="cta-row"><a class="cta" href="https://item.rakuten.co.jp/kawasui/10002524/" target="_blank" rel="noopener">商品を見る ↗</a></div>
+      <p>紀州串本産、養殖本マグロのトロ・赤身セット500g。この日だけの特別価格です。</p>
+      <div class="stat-row">
+        <div class="stat"><div class="k">PRICE</div><div class="v"><span class="was num">8,980円</span><span class="num">7,980円</span></div></div>
       </div>
+      <div class="cta-row"><a class="cta cta-outline-ember" href="https://item.rakuten.co.jp/kawasui/10002403/" target="_blank" rel="noopener">本マグロを見る ↗</a></div>
+    </div>
+  </section>
+
+  <section class="day on-dark" id="d6">
+    <div class="inner">
+      <p class="eyebrow">2尾300g ／ 9.8 tue 0:00 — 23:59</p>
+      <h3>ふたりで食べても、<br>ひとりで食べても。</h3>
       <figure class="photo"><img src="images/product-2bi300g.jpg" alt="うなぎ蒲焼き2尾300g" loading="lazy"></figure>
-    </div>
-  </div>
-</section>
-
-<section class="day on-light" id="d7">
-  <div class="wrap">
-    <div class="grid">
-      <div>
-        <p class="eyebrow">ずわいがに 1kgセール ／ 9.9 wed 0:00 — 23:59</p>
-        <h3>うなぎ屋が本気で選んだ、<br>殻カット済みのずわいがに。</h3>
-        <p>総重量1.2kg、殻カット済みで生食もしゃぶしゃぶも思いのまま。この日だけの特別価格です。</p>
-        <div class="stat-row">
-          <div class="stat"><div class="k">PRICE</div><div class="v"><span class="was num">8,000円</span><span class="num">6,380円</span></div></div>
-        </div>
-        <div class="cta-row"><a class="cta" href="https://item.rakuten.co.jp/kawasui/10002492/" target="_blank" rel="noopener">ずわいがにを見る ↗</a></div>
+      <p>大きめサイズの長焼きを2尾セットで。この日だけポイント10倍です。</p>
+      <div class="stat-row">
+        <div class="stat"><div class="k">POINT</div><div class="v">10倍</div></div>
       </div>
+      <div class="cta-row"><a class="cta cta-outline-gold" href="https://item.rakuten.co.jp/kawasui/10002524/" target="_blank" rel="noopener">商品を見る ↗</a></div>
+    </div>
+  </section>
+
+  <section class="day on-light" id="d7">
+    <div class="inner">
+      <p class="eyebrow">ずわいがに 1kgセール ／ 9.9 wed 0:00 — 23:59</p>
+      <h3>うなぎ屋が本気で選んだ、<br>殻カット済みのずわいがに。</h3>
       <figure class="photo"><img src="images/product-zuwaigani.jpg" alt="ずわいがに1kgセット" loading="lazy"></figure>
-    </div>
-  </div>
-</section>
-
-<section class="day on-dark" id="d8">
-  <div class="wrap">
-    <div class="grid">
-      <div>
-        <p class="eyebrow">LAST SPURT ／ 9.10 thu 0:00 — 9.11 fri 1:59</p>
-        <h3>最後の夜まで、<br>気を抜かない。</h3>
-        <p>10,000円以上のお買い物で使える777円OFFクーポンに加えて、蒲焼きカットの500g・1kgがポイント10倍。スーパーSALEはこの夜の1:59に幕を閉じます。</p>
-        <div class="stat-row">
-          <div class="stat"><div class="k">COUPON（10,000円以上）</div><div class="v">777円OFF</div></div>
-          <div class="stat"><div class="k">POINT</div><div class="v">10倍</div></div>
-        </div>
+      <p>総重量1.2kg、殻カット済みで生食もしゃぶしゃぶも思いのまま。この日だけの特別価格です。</p>
+      <div class="stat-row">
+        <div class="stat"><div class="k">PRICE</div><div class="v"><span class="was num">8,000円</span><span class="num">6,380円</span></div></div>
       </div>
+      <div class="cta-row"><a class="cta cta-outline-ember" href="https://item.rakuten.co.jp/kawasui/10002492/" target="_blank" rel="noopener">ずわいがにを見る ↗</a></div>
+    </div>
+  </section>
+
+  <section class="day on-dark" id="d8">
+    <div class="inner">
+      <p class="eyebrow">LAST SPURT ／ 9.10 thu 0:00 — 9.11 fri 1:59</p>
+      <h3>最後の夜まで、<br>気を抜かない。</h3>
       <div class="photo-pair">
         <figure>
           <div class="photo"><img src="images/product-cut500g.jpg" alt="蒲焼きカット500g" loading="lazy"></div>
@@ -517,19 +451,25 @@
           <figcaption>1kg</figcaption>
         </figure>
       </div>
+      <p>10,000円以上のお買い物で使える777円OFFクーポンに加えて、蒲焼きカットの500g・1kgがポイント10倍。スーパーSALEはこの夜の1:59に幕を閉じます。</p>
+      <div class="stat-row">
+        <div class="stat"><div class="k">COUPON（10,000円以上）</div><div class="v">777円OFF</div></div>
+        <div class="stat"><div class="k">POINT</div><div class="v">10倍</div></div>
+      </div>
+      <div class="cta-row">
+        <a class="cta cta-outline-gold" href="https://item.rakuten.co.jp/kawasui/cut40-500/" target="_blank" rel="noopener">蒲焼きカット500g ↗</a>
+        <a class="cta cta-outline-gold" href="https://item.rakuten.co.jp/kawasui/cut40-1k/" target="_blank" rel="noopener">蒲焼きカット1kg ↗</a>
+      </div>
     </div>
-    <div class="cta-row" style="margin-top:32px;">
-      <a class="cta" href="https://item.rakuten.co.jp/kawasui/cut40-500/" target="_blank" rel="noopener">蒲焼きカット500g ↗</a>
-      <a class="cta" href="https://item.rakuten.co.jp/kawasui/cut40-1k/" target="_blank" rel="noopener">蒲焼きカット1kg ↗</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="closing">
-  <div class="wrap">
-    <h2>11日間、おつかれさまでした。<br>また次のスーパーSALEで。</h2>
-    <p>気になる企画は、開催日にこのページへ戻ってきてください。ブックマークしておくと、日替わりの内容がすぐに見つかります。</p>
-    <a class="cta" href="https://www.rakuten.co.jp/kawasui/" target="_blank" rel="noopener">うなぎ屋かわすい ショップをのぞく ↗</a>
-    <footer>うなぎ屋かわすい｜楽天スーパーSALEの愉しみ方</footer>
-  </div>
-</section>
+  <section class="closing">
+    <div class="inner">
+      <h2>11日間、おつかれさまでした。<br>また次のスーパーSALEで。</h2>
+      <p>気になる企画は、開催日にこのページへ戻ってきてください。ブックマークしておくと、日替わりの内容がすぐに見つかります。</p>
+      <a class="cta cta-outline-gold" href="https://www.rakuten.co.jp/kawasui/" target="_blank" rel="noopener">うなぎ屋かわすい ショップをのぞく ↗</a>
+      <footer>うなぎ屋かわすい｜楽天スーパーSALEの愉しみ方</footer>
+    </div>
+  </section>
+
+</div>
