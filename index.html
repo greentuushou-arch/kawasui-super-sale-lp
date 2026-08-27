@@ -46,7 +46,7 @@
     background:#f9f9f9;
     text-align:center;
   }
-  .presale-hero img{ width:100%; height:auto; }
+  .presale-hero img{ width:100%; height:auto; border-radius:16px; }
   .presale-hero-foot{ padding:18px 18px 24px; }
 
   .calendar-poster{ background:#000; border-bottom:3px solid var(--ember); }
@@ -61,12 +61,30 @@
 
   /* ---------------- FV ---------------- */
   .fv{
+    position:relative;
     background:
       radial-gradient(130% 100% at 50% 0%, var(--lacquer-2) 0%, var(--lacquer) 60%),
       var(--lacquer);
     color:var(--rice);
     padding:48px 0 40px;
     text-align:center;
+    overflow:hidden;
+  }
+  .fv-mascot{
+    position:absolute;
+    top:14px;
+    right:14px;
+    width:120px;
+    height:auto;
+    transform-origin:75% 90%;
+    animation:mascot-wave 2.6s ease-in-out infinite;
+  }
+  @keyframes mascot-wave{
+    0%, 100%{ transform:rotate(-7deg) translateY(0); }
+    50%{ transform:rotate(6deg) translateY(-8px); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .fv-mascot{ animation:none; }
   }
   .fv-logo{
     display:block;
@@ -172,7 +190,7 @@
     font-size:20px;
     line-height:1.65;
   }
-  .feature .photo{ border:1px solid rgba(126,28,20,.35); margin-bottom:20px; }
+  .feature .photo{ border:1px solid rgba(126,28,20,.35); margin-bottom:20px; border-radius:14px; overflow:hidden; }
   .feature .photo img{ width:100%; height:auto; }
 
   /* ---------------- CTA buttons ---------------- */
@@ -235,7 +253,7 @@
     line-height:1.45;
     text-wrap:balance;
   }
-  .day .photo{ margin-bottom:18px; }
+  .day .photo{ margin-bottom:18px; border-radius:14px; overflow:hidden; }
   .day .photo img{ width:100%; height:auto; }
   .day.on-light .photo{ border:1px solid rgba(217,169,74,.6); }
   .day.on-dark .photo{ border:1px solid rgba(217,169,74,.4); }
@@ -322,6 +340,7 @@
     .inner{ padding:0 14px; }
     .fv{ padding:38px 0 32px; }
     .fv-logo{ max-width:300px; margin-bottom:22px; }
+    .fv-mascot{ width:76px; top:8px; right:8px; }
     .feature{ padding:34px 0; }
     .day{ padding:36px 0; }
     .presale-hero-foot{ padding:16px 14px 20px; }
@@ -341,6 +360,7 @@
 <div class="page">
 
   <div class="fv">
+    <img class="fv-mascot" src="images/mascot-uchiwa.png" alt="うちわでSALEを知らせるうなちゃん">
     <div class="inner">
       <img class="fv-logo" src="images/ss-logo.png" alt="Rakuten スーパーSALE 9/4 20:00 → 9/11 01:59">
       <h1>十一日間<br>日替わりで<br>かわすいを<br>愉しむ</h1>
