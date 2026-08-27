@@ -109,10 +109,13 @@
     font-weight:600;
     font-size:36px;
     display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
     align-items:baseline;
     gap:10px;
   }
-  .fv .period .range small{font-size:19.5px; color:var(--rice-2); font-weight:500;}
+  .fv .period .leg{ display:inline-flex; align-items:baseline; gap:8px; white-space:nowrap; }
+  .fv .period .range small{font-size:19.5px; color:var(--rice-2); font-weight:500; white-space:nowrap;}
   .fv .period .arrow{color:var(--rice-2); font-size:21px;}
 
   /* ---------------- Date strip ---------------- */
@@ -326,6 +329,9 @@
     .date-badge .d{ font-size:46px; }
     .datestrip a{ font-size:13px; padding:10px 1px; }
     .datestrip a span{ font-size:9.5px; }
+    .fv .period{ padding:14px 16px; gap:8px; }
+    .fv .period .range{ font-size:26px; gap:6px 12px; }
+    .fv .period .range small{ font-size:14px; }
   }
 </style>
 
@@ -338,7 +344,11 @@
       <p class="lead">9月1日のプレセールから、9月11日の深夜まで。<br>日ごとに変わる企画を、ひとつずつのぞいてみてください。</p>
       <div class="period">
         <span class="tag">楽天スーパーSALE開催期間</span>
-        <span class="range num">9/4 <small>fri 20:00</small><span class="arrow">→</span>9/11 <small>fri 01:59</small></span>
+        <span class="range num">
+          <span class="leg">9/4 <small>fri 20:00</small></span>
+          <span class="arrow">→</span>
+          <span class="leg">9/11 <small>fri 01:59</small></span>
+        </span>
       </div>
     </div>
   </div>
